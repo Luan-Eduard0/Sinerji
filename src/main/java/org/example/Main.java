@@ -8,7 +8,9 @@
         public static void main(String[] args) {
 
             //O dia é setado como 1 para ignorar essa informação
-            //É necessario criar uma lista de vendedores para poder calcular as vendas
+            //foi necessario criar uma lista de vendedores para poder calcular as vendas
+            //O codigo possui tratamento de exceção para condições que não possam sem atendidas
+
             int mes = 12;
             int ano = 2021;
 
