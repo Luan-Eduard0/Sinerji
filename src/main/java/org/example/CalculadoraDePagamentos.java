@@ -50,6 +50,26 @@ public class CalculadoraDePagamentos {
 
         return totalBeneficios;
     }
+    public double calcularTotalSalarios(List<Funcionario> funcionarios, int ano, int mes) {
+        double totalSalarios = 0.0;
+
+        for (Funcionario funcionario : funcionarios) {
+            LocalDate dataContrato = funcionario.getDataContrato();
+            int anoContrato = dataContrato.getYear();
+            int mesContrato = dataContrato.getMonthValue();
+            if (ano >= anoContrato) {
+                if (mes >= mesContrato) {
+                    totalSalarios += funcionario.getSalario() ;
+                } else if (ano > anoContrato) {
+                    totalSalarios += funcionario.getSalario();
+                } else {
+                    System.out.println("Funcionário não contratado no mês especificado");
+                }
+            }
+        }
+
+        return totalSalarios;
+    }
 
 
     public Funcionario funcionarioMaiorValorMes(List<Funcionario> funcionarios, int ano, int mes) {

@@ -9,8 +9,8 @@
 
             //O dia é setado como 1 para ignorar essa informação
             //É necessario criar uma lista de vendedores para poder calcular as vendas
-            int mes = 01;
-            int ano = 2018;
+            int mes = 12;
+            int ano = 2021;
 
             CalculadoraDePagamentos calculadora = new CalculadoraDePagamentos();
             List<Funcionario> funcionarios = new ArrayList<>();
@@ -69,28 +69,32 @@
 
 
             double totalSalarioBeneficio = calculadora.calcularTotalPago(funcionarios, ano, mes);
-            double totalSalario = calculadora.calcularTotalPago(funcionarios, ano, mes);
-            double totalBeneficio = calculadora.calcularTotalBeneficios(funcionarios, ano, mes);
-            Funcionario funcionarioMaisAlto = calculadora.funcionarioMaiorValorMes(funcionarios, ano, mes);
-            String nomeFuncionarioMaisAltoBeneficio = calculadora.nomeFuncionarioMaiorBeneficio(funcionarios, ano, mes);
-            Vendedor vendedorMaisVendas = calculadora.vendedorMaiorVendas(vendedores, ano, mes);
-
-
-
             System.out.println("Total pago (salário + benefício) no mês " + mes + " de " + ano + ": " + totalSalarioBeneficio);
-            System.out.println("Total pago apenas em salários no mês " + mes + " de " + ano + ": " + totalSalario);
-            System.out.println("Total pago em benefícios no mês " + mes + " de " + ano + ": " + totalBeneficio);
 
+            double totalSalario = calculadora.calcularTotalSalarios(funcionarios, ano, mes);
+            System.out.println("Total pago apenas em salários no mês " + mes + " de " + ano + ": " + totalSalario);
+
+            double totalBeneficio = calculadora.calcularTotalBeneficios(funcionarios, ano, mes);
+            System.out.println("Total pago somente em beneficios excluindo bonus contratual mês  " + mes + " de " + ano + ": " + totalBeneficio);
+
+
+            Funcionario funcionarioMaisAlto = calculadora.funcionarioMaiorValorMes(funcionarios, ano, mes);
             if (funcionarioMaisAlto != null) {
                 System.out.println("Funcionário com maior remuneração no mês " + mes + " de " + ano + ": " + funcionarioMaisAlto.getNome());
             } else {
                 System.out.println("Não há funcionários no mês " + mes + " de " + ano);
             }
+
+
+            String nomeFuncionarioMaisAltoBeneficio = calculadora.nomeFuncionarioMaiorBeneficio(funcionarios, ano, mes);
             if (nomeFuncionarioMaisAltoBeneficio != null) {
                 System.out.println("Funcionário com maior benefício no mês " + mes + " de " + ano + ": " + nomeFuncionarioMaisAltoBeneficio);
             } else {
                 System.out.println("Não há funcionários com benefício no mês " + mes + " de " + ano);
             }
+
+
+            Vendedor vendedorMaisVendas = calculadora.vendedorMaiorVendas(vendedores, ano, mes);
             if (vendedorMaisVendas != null) {
                 System.out.println("Vendedor com maior numero de vendas no mês " + mes + " de " + ano + ": " + vendedorMaisVendas.getNome());
             } else {
